@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -196,24 +198,92 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\FoodModel.cs" />
+    <Compile Include="Models\database\CATAGORY.cs">
+      <DependentUpon>TestModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\database\FOOD.cs">
+      <DependentUpon>TestModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\database\TestModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\database\TestModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\database\TestModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\FoodService.cs" />
+    <Compile Include="Service\MasterService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap-theme.css" />
+    <Content Include="Content\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Image\foodthai.jpg" />
+    <Content Include="Content\Image\ImageContent\กระเพรา.jpg" />
+    <Content Include="Content\Image\ImageContent\ต้มยำกุ้งน้ำข้น.jpg" />
+    <Content Include="Content\Image\ImageContent\ส้มตำ.jpg" />
+    <Content Include="Content\Image\ImageContent\ข้าวหมกไก่.jpg" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\npm.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\database\TestModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TestModel.edmx</DependentUpon>
+      <LastGenOutput>TestModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\database\TestModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TestModel.edmx</DependentUpon>
+      <LastGenOutput>TestModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Plugin\DataTables-1.10.18\css\dataTables.bootstrap.css" />
+    <Content Include="Plugin\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
+    <Content Include="Plugin\DataTables-1.10.18\css\dataTables.jqueryui.css" />
+    <Content Include="Plugin\DataTables-1.10.18\css\dataTables.jqueryui.min.css" />
+    <Content Include="Plugin\DataTables-1.10.18\css\jquery.dataTables.css" />
+    <Content Include="Plugin\DataTables-1.10.18\css\jquery.dataTables.min.css" />
+    <Content Include="Plugin\DataTables-1.10.18\images\sort_asc.png" />
+    <Content Include="Plugin\DataTables-1.10.18\images\sort_asc_disabled.png" />
+    <Content Include="Plugin\DataTables-1.10.18\images\sort_both.png" />
+    <Content Include="Plugin\DataTables-1.10.18\images\sort_desc.png" />
+    <Content Include="Plugin\DataTables-1.10.18\images\sort_desc_disabled.png" />
+    <Content Include="Plugin\DataTables-1.10.18\js\dataTables.bootstrap.js" />
+    <Content Include="Plugin\DataTables-1.10.18\js\dataTables.bootstrap.min.js" />
+    <Content Include="Plugin\DataTables-1.10.18\js\dataTables.jqueryui.js" />
+    <Content Include="Plugin\DataTables-1.10.18\js\dataTables.jqueryui.min.js" />
+    <Content Include="Plugin\DataTables-1.10.18\js\jquery.dataTables.js" />
+    <Content Include="Plugin\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\Admin\Admin.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -221,10 +291,26 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\css\bootstrap-theme.css.map" />
+    <Content Include="Content\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\css\bootstrap.min.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <EntityDeploy Include="Models\database\TestModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TestModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\database\TestModel.edmx.diagram">
+      <DependentUpon>TestModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -267,6 +353,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\North.cshtml" />
+    <Content Include="Views\Home\Northeast.cshtml" />
+    <Content Include="Views\Home\Central.cshtml" />
+    <Content Include="Views\Home\South.cshtml" />
+    <Content Include="Views\Shared\_SecondLayout.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_LayoutBackend.cshtml" />
+    <Content Include="Views\Admin\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -278,6 +372,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

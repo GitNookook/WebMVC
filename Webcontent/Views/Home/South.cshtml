@@ -1,8 +1,10 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "South";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model IEnumerable<Webcontent.Models.FoodModel>
+
+@model IEnumerable<Webcontent.Service.FoodService>
 
 <div class="row">
     @{
@@ -10,9 +12,9 @@
 
         foreach (var item in Model)
         {
-            string targetModal = "#myModal" + item.ID;
-            string targetModall = "myModal" + item.ID;
-            <div class="col-sm-3 mycursor"><img src="@item.ImageSource" data-toggle="modal" data-target="@targetModal" class="img-circle" alt="@item.Name" width="250" height="236"></div>
+            string targetModal = "#myModal" + item.id;
+            string targetModall = "myModal" + item.id;
+            <div class="col-sm-3 mycursor"><img src="@item.imgsrc" data-toggle="modal" data-target="@targetModal" class="img-circle" alt="@item.name" width="250" height="236"></div>
             <div id="@targetModall" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
@@ -20,10 +22,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">@item.Name</h4>
+                            <h4 class="modal-title">@item.name</h4>
                         </div>
                         <div class="modal-body">
-                            <img src="@item.ImageSource" width="500" height="472" />
+                            <img src="@item.imgsrc" width="500" height="472" />
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -34,5 +36,8 @@
             </div>
         }
     }
+
 </div>
+
+
 

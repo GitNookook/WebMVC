@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_LayoutBackend.cshtml";
+}
+
+<h2>@ViewBag.Pagename</h2>
+<button class="btn btn-success" id="add">+Add </button>
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Catagory</th>
+            <th>Image</th>
+            <th>CreatedDate</th>
+            <th>CreatedBy</th>
+            <th>ModifiedDate</th>            
+            <th>ModifiedBy</th>            
+            <th>Control</th>
+        </tr>
+    </thead>
+</table>
+
+@section scripts {
+    <script src="~/Scripts/Admin/Admin.js"></script>
+}

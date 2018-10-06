@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Webcontent.Models.Category>
+<ul class="nav navbar-nav navbar-right">
+    @foreach (var item in Model)
+    {
+        <li><a href="@item.Path">@item.Name</a></li>
+    }
+</ul>
+
+
+@*<ul class="nav navbar-nav navbar-right">
+        <li><a href="@Url.Action("North","Home")">North</a></li>
+        <li><a href="@Url.Action("Northeast","Home")">Northeast</a></li>
+        <li><a href="@Url.Action("Central","Home")">Central</a></li>
+        <li><a href="@Url.Action("South","Home")">South</a></li>
+    </ul>*@
+
